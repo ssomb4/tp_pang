@@ -10,11 +10,17 @@ export class LoadScene extends Phaser.Scene {
             frameWidth: 256,
             frameHeight: 288
         });
+
+        this.load.image('harpon', './images/harpon.png');
+
+        this.load.spritesheet('meteors', './images/meteors.png', { 
+        frameWidth: 256,
+        frameHeight: 256
+        });
     }
 
     create() {
         this.createAnimations();
-
         this.scene.start('Level001');
     }
 

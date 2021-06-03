@@ -17,9 +17,12 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         this.anims.play('idle');
 
         this.previous_state = this.state;
+
+        this.countHarpoon = 0;
     }
 
     update(time) {
+
         if(this.controls.left.isDown) {
             this.setVelocityX(-this.velocity);
             this.flipX = true;
@@ -37,6 +40,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
         if(this.controls.space.isDown) {
             this.state = 'scream';
+            this.FireHarpon();
         }
 
         if(this.state != this.previous_state) {
@@ -59,5 +63,14 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
                 this.setFrame(this.initialFrame);
             }
         }
+    }
+
+    FireHarpon(){
+        // this.add.image(this.player.x, 1000, 'harpon').setOrigin(0).setScale(10);
+        // game.time.events.add(Phaser.Timer.SECOND * 2, this.destroy, this);
+        //if(this.countHarpoon > 2)return;
+        //this.countHarpoon++;
+
+        //var harpon = this.physics.add.image(this.player.x, 100, 'harpon').setScale(10);
     }
 }
