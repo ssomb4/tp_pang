@@ -36,16 +36,11 @@ export class Level001 extends Phaser.Scene {
 
     update(time) {
         this.player.update(time);
-        this.meteors.update(time);
+        this.launchMeteors();
     }
 
     launchMeteors() {
         this.meteors.launch();
         this.physics.add.collider(this.player, this.meteors);
-        this.physics.add.collider(this.meteors, this.harpon, this.onCollision, null, this);
-    }
-
-    onCollision(meteors, harpon) {
-        harpon.hit();
     }
 }

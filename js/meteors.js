@@ -22,10 +22,6 @@ export class Meteors extends Phaser.Physics.Arcade.Sprite{
         }
     }
 
-     update(time) {
-         this.launch();
-    }
-
     launch() {
         this.setCollideWorldBounds(true);
         this.setBounce(1, 1);
