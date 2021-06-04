@@ -1,3 +1,5 @@
+import { Harpon } from "./harpon.js";
+
 export class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame);
@@ -18,7 +20,6 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
         this.previous_state = this.state;
 
-        this.countHarpoon = 0;
     }
 
     update(time) {
@@ -38,10 +39,11 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
             this.state = "idle";
         }
 
-        if(this.controls.space.isDown) {
-            this.state = 'scream';
-            this.FireHarpon();
-        }
+        // if(this.controls.space.isDown) {
+        //     console.log("aaaaaaaa");
+        //     this.state = 'scream';
+        //     this.fireHarpon();
+        // }
 
         if(this.state != this.previous_state) {
             this.previous_state = this.state;
@@ -65,12 +67,12 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    FireHarpon(){
-        // this.add.image(this.player.x, 1000, 'harpon').setOrigin(0).setScale(10);
-        // game.time.events.add(Phaser.Timer.SECOND * 2, this.destroy, this);
-        //if(this.countHarpoon > 2)return;
-        //this.countHarpoon++;
-
-        //var harpon = this.physics.add.image(this.player.x, 100, 'harpon').setScale(10);
-    }
+    // fireHarpon(){
+    //     if(this.countHarpon > 2) return;
+    //     this.countHarpon++;
+        
+    //     var harpon = this.add.image(this.player.x, 1000, 'harpon').setOrigin(0).setScale(10);
+    //     harpon.scaleY=0;
+    //     //this.physics.add.overlap(harpon,this.groupBall,this.hitHarpoon,null,this);
+    // }
 }

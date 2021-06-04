@@ -5,6 +5,8 @@ export class Meteors extends Phaser.Physics.Arcade.Sprite{
         scene.add.existing(this);
         scene.physics.add.existing(this);
 
+        this.setBounce(1, 1);
+
         this.setCollideWorldBounds(true);
         this.setScale(5);
 
@@ -12,29 +14,37 @@ export class Meteors extends Phaser.Physics.Arcade.Sprite{
 
         this.initial_velocity = {
             min: {
-                x: -200,
-                y: -600,
+                x: -1000,
+                y: -3000,
             },
             max: {
-                x: 200,
-                y: -800
+                x: 1200,
+                y: -1000
             }
         }
-    }
-
-    launch() {
-        this.setCollideWorldBounds(true);
-        this.setBounce(1, 1);
 
         this.setVelocity(
             Phaser.Math.Between(
                 this.initial_velocity.min.x,
                 this.initial_velocity.max.x
-            ),
+        ),
             Phaser.Math.Between(
                 this.initial_velocity.min.y,
                 this.initial_velocity.max.y
             )
         );
     }
+
+    // launch() {
+    //     this.setVelocity(
+    //         Phaser.Math.Between(
+    //             this.initial_velocity.min.x,
+    //             this.initial_velocity.max.x
+    //         ),
+    //         Phaser.Math.Between(
+    //             this.initial_velocity.min.y,
+    //             this.initial_velocity.max.y
+    //         )
+    //     );
+    // }
 }

@@ -4,6 +4,7 @@ export class LoadScene extends Phaser.Scene {
     }
 
     preload() {
+        
         this.load.image('background', './images/bg.png');
 
         this.load.spritesheet('player', './images/player.png', {

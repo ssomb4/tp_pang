@@ -1,5 +1,6 @@
 import { Player } from "./player.js";
 import { Meteors } from "./meteors.js";
+import { Harpon } from "./harpon.js";
 
 export class Level001 extends Phaser.Scene {
     constructor() {
@@ -24,7 +25,7 @@ export class Level001 extends Phaser.Scene {
             'player', 6
         );
 
-        //this.add.image(this.player.x, 1000, 'harpon').setOrigin(0).setScale(10);
+        this.add.image(this.player.x, 1000, 'harpon').setOrigin(0).setScale(10);
 
         this.meteors = new Meteors(
             this,
@@ -36,11 +37,5 @@ export class Level001 extends Phaser.Scene {
 
     update(time) {
         this.player.update(time);
-        this.launchMeteors();
-    }
-
-    launchMeteors() {
-        this.meteors.launch();
-        this.physics.add.collider(this.player, this.meteors);
     }
 }
