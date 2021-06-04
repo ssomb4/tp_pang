@@ -39,11 +39,11 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
             this.state = "idle";
         }
 
-        // if(this.controls.space.isDown) {
-        //     console.log("aaaaaaaa");
-        //     this.state = 'scream';
-        //     this.fireHarpon();
-        // }
+         if(this.controls.space.isDown) {
+             console.log("aaaaaaaa");
+             this.state = 'scream';
+             this.scene.fireHarpon();
+         }
 
         if(this.state != this.previous_state) {
             this.previous_state = this.state;
@@ -67,12 +67,12 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    // fireHarpon(){
-    //     if(this.countHarpon > 2) return;
-    //     this.countHarpon++;
-        
-    //     var harpon = this.add.image(this.player.x, 1000, 'harpon').setOrigin(0).setScale(10);
-    //     harpon.scaleY=0;
-    //     //this.physics.add.overlap(harpon,this.groupBall,this.hitHarpoon,null,this);
+    //  fireHarpon(){
+    //      if(this.countHarpon > 2) return;
+    //      this.countHarpon++;
+    
+    //      var harpon = this.add.image(this.player.x, 1000, 'harpon').setOrigin(0).setScale(10);
+    //      harpon.scaleY=0;
+    //      this.physics.add.overlap(harpon,this.groupBall,this.hitHarpoon,null,this);
     // }
 }

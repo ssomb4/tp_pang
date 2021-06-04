@@ -22,7 +22,7 @@ export class Level001 extends Phaser.Scene {
             this,
             this.game.config.width * 0.5,
             this.game.config.height * 0.5,
-            'player', 6
+            'player', 0
         );
 
         this.add.image(this.player.x, 1000, 'harpon').setOrigin(0).setScale(10);
@@ -38,4 +38,12 @@ export class Level001 extends Phaser.Scene {
     update(time) {
         this.player.update(time);
     }
+
+    fireHarpon(){
+        if(this.countHarpon > 2) return;
+        this.countHarpon++;
+   
+        var harpon = this.add.image(this.player.x, 1000, 'harpon').setOrigin(0).setScale(10);
+        this.physics.add.overlap(harpon,this.groupBall,this.hitHarpoon,null,this);
+   }
 }
