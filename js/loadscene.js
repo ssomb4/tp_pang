@@ -7,16 +7,16 @@ export class LoadScene extends Phaser.Scene {
         
         this.load.image('background', './images/bg.png');
 
-        this.load.spritesheet('player', './images/player.png', {
-            frameWidth: 256,
-            frameHeight: 288
-        });
-
         this.load.image('harpon', './images/harpon.png');
 
         this.load.spritesheet('meteors', './images/meteors.png', { 
         frameWidth: 256,
         frameHeight: 256
+        });
+
+        this.load.spritesheet('player', './images/player.png', {
+            frameWidth: 256,
+            frameHeight: 288
         });
     }
 

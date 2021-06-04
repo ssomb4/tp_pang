@@ -8,8 +8,6 @@ export class Harpon extends Phaser.Physics.Arcade.Sprite{
         this.setCollideWorldBounds(true);
 
         this.controls = scene.input.keyboard.createCursorKeys();
-
-        this.countHarpon = 0;
     }
 
     update(time){
@@ -21,9 +19,9 @@ export class Harpon extends Phaser.Physics.Arcade.Sprite{
     fireHarpon(){
         if(this.countHarpon > 2) return;
         this.countHarpon++;
-        
         var harpon = this.add.image(this.player.x, 1000, 'harpon').setOrigin(0).setScale(10);
-        harpon.scaleY=0;
+        harpon.destroy();
+        sprite.events(destroySprite, this);
         this.physics.add.overlap(harpon,this.groupBall,this.hitHarpoon,null,this);
     }
 }
