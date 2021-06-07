@@ -3,9 +3,9 @@ import { Player2 } from "./player2.js";
 import { Meteors } from "./meteors.js";
 import { Harpon } from "./harpon.js";
 
-export class Level002 extends Phaser.Scene {
+export class Level003 extends Phaser.Scene {
     constructor() {
-        super('Level002');
+        super('Level003');
 
         this.countHarpon = 0;
         this.velocity = 100;
@@ -20,7 +20,7 @@ export class Level002 extends Phaser.Scene {
     }
 
     create() {
-        this.add.image(0, 0, 'background2').setOrigin(0).setScale(5);
+        this.add.image(0, 0, 'background3').setOrigin(0).setScale(5);
 
         this.player = new Player(
             this,
@@ -38,7 +38,7 @@ export class Level002 extends Phaser.Scene {
 
         this.input.manager.enabled = true;
         this.input.once('pointerdown', function () {
-            this.scene.start('Level003');
+            this.scene.start('Level001');
         }, this);
     }
 

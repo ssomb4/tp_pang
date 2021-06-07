@@ -49,9 +49,7 @@ export class Level001 extends Phaser.Scene {
 
         this.input.manager.enabled = true;
         this.input.once('pointerdown', function () {
-
-            this.scene.start('sceneB');
-
+            this.scene.start('Level002');
         }, this);
     }
 

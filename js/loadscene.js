@@ -6,6 +6,8 @@ export class LoadScene extends Phaser.Scene {
     preload() {
         
         this.load.image('background', './images/bg.png');
+        this.load.image('background2', './images/bg2.png');
+        this.load.image('background3', './images/bg3.png');
 
         this.load.image('harpon', './images/harpon.png');
 
