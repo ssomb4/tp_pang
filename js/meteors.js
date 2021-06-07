@@ -35,16 +35,7 @@ export class Meteors extends Phaser.Physics.Arcade.Sprite{
         );
     }
 
-    // launch() {
-    //     this.setVelocity(
-    //         Phaser.Math.Between(
-    //             this.initial_velocity.min.x,
-    //             this.initial_velocity.max.x
-    //         ),
-    //         Phaser.Math.Between(
-    //             this.initial_velocity.min.y,
-    //             this.initial_velocity.max.y
-    //         )
-    //     );
-    // }
+    update(time) {
+        
+    }
 }

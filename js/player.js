@@ -23,7 +23,6 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     update(time) {
-
         if(this.controls.left.isDown) {
             this.setVelocityX(-this.velocity);
             this.flipX = true;
@@ -40,9 +39,9 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
          if(this.controls.space.isDown) {
-             console.log("aaaaaaaa");
-             this.state = 'scream';
-             this.scene.fireHarpon();
+            console.log("aaaaaaaa");
+            this.state = 'scream';
+            this.scene.fireHarpon();
          }
 
         if(this.state != this.previous_state) {

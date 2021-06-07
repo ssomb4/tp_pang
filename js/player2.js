@@ -11,40 +11,81 @@ export class Player2 extends Phaser.Physics.Arcade.Sprite {
         this.initialFrame = frame;
 
         this.velocity = 2000;
-        this.cursors = this.input.keyboard.addKeys(
-            {up:Phaser.Input.Keyboard.KeyCodes.W,
-                left:Phaser.Input.Keyboard.KeyCodes.A,
-                right:Phaser.Input.Keyboard.KeyCodes.D});
+        this.direction = 0;
 
         this.state = "idle2";
         this.anims.play('idle2');
 
         this.previous_state = this.state;
+    }
 
+    init () {
+        this.scene.input.keyboard.on('keydown', e => {
+            this.startMoving(e);
+        });
+
+        this.scene.input.keyboard.on('keyup', e => {
+            this.endMoving(e);
+        });
+
+    }
+
+    startMoving(event) {
+        switch(event.keyCode) {
+            case 65: //a
+                this.setVelocityX(-this.velocity);
+                this.flipX = true;
+                this.state = 'walking2';
+                break;
+
+            case 68: //d
+                this.setVelocityX(this.velocity);
+                this.flipX = false;
+                this.state = 'walking2';
+                break;
+
+            case 87: //w
+                console.log("aaaaaaaa");
+                this.state = 'scream2';
+                this.scene.fireHarpon();
+                break;
+        }
+    }
+
+    endMoving(event) {
+        this.direction = 0;
     }
 
     update(time) {
 
-        if(this.input.keyboards.A.isDown) {
-            this.setVelocityX(-this.velocity);
-            this.flipX = true;
-            this.state = 'walking2';
-        }
-        else if(this.controls.D.isDown) {
-            this.setVelocityX(this.velocity);
-            this.flipX = false;
-            this.state = 'walking2';
-        }
-        else {
-            this.setVelocityX(0);
+        this.y += this.direction * this.velocity;
+
+        // if (game.input.keyboard.isDown(Phaser.Keyboard.case65)) {
+        //     this.setVelocityX(-this.velocity);
+        //     this.flipX = true;
+        //     this.state = 'walking2';
+        // }
+
+        // else if (game.input.keyboard.isDown(Phaser.Keyboard.case68)) {
+        //     this.setVelocityX(this.velocity);
+        //     this.flipX = false;
+        //     this.state = 'walking2';
+        // }
+        
+        // else if (game.input.keyboard.isDown(Phaser.Keyboard.case87)){
+        //     console.log("aaaaaaaa");
+        //     this.state = 'scream2';
+        //     this.scene.fireHarpon();
+        // }
+        
+        // else {
+        //     player.body.velocity.x = 0;
+        // }
+              
+        if(this.velocity = 0)
+        {
             this.state = "idle2";
         }
-
-         if(this.controls.W.isDown) {
-             console.log("aaaaaaaa");
-             this.state = 'scream2';
-             this.scene.fireHarpon();
-         }
 
         if(this.state != this.previous_state) {
             this.previous_state = this.state;
