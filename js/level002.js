@@ -25,7 +25,7 @@ export class Level002 extends Phaser.Scene {
         this.player = new Player(
             this,
             this.game.config.width * 0.5,
-            this.game.config.height * 0.5,
+            this.game.config.height,
             'player', 0
         );
 
@@ -40,6 +40,11 @@ export class Level002 extends Phaser.Scene {
         this.input.once('pointerdown', function () {
             this.scene.start('Level003');
         }, this);
+
+        this.add.text(100, 100, 'Level 02', {
+            color: '#ffff',
+            fontSize: 150
+        });
     }
 
     update(time) {
@@ -47,9 +52,13 @@ export class Level002 extends Phaser.Scene {
         //this.player2.update(time);
 
         //this.harpon.update(time);
+    }
 
-        if(this.controls.space.isDown) {
-            //this.scene.start("level002");
-        }
+    fireHarpon() {
+        if(this.countHarpon >= 1) return;
+        this.countHarpon++;
+   
+        var harpon = this.add.image(this.player.x, 900, 'harpon').setOrigin(0).setScale(10);
+        this.physics.add.overlap(harpon,this.meteors,this.fireHarpoon,null,this);
     }
 }

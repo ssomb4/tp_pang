@@ -20,12 +20,13 @@ export class Level001 extends Phaser.Scene {
     }
 
     create() {
+
         this.add.image(0, 0, 'background').setOrigin(0).setScale(5);
 
         this.player = new Player(
             this,
             this.game.config.width * 0.5,
-            this.game.config.height * 0.5,
+            this.game.config.height,
             'player', 0
         );
 
@@ -51,12 +52,16 @@ export class Level001 extends Phaser.Scene {
         this.input.once('pointerdown', function () {
             this.scene.start('Level002');
         }, this);
+
+        this.add.text(100, 100, 'Level 01', {
+            color: '#ffff',
+            fontSize: 150
+        });
     }
 
     update(time) {
         this.player.update(time);
         //this.player2.update(time);
-
         //this.harpon.update(time);
     }
 
@@ -68,48 +73,48 @@ export class Level001 extends Phaser.Scene {
         this.physics.add.overlap(harpon,this.meteors,this.fireHarpoon,null,this);
     }
 
-    GroupHarpon () {
-        harpon = game.add.group();
-        this.harpon.enableBody = true;
-        this.harpon.physicsBodyType = phaser.Physics.ARCADE;
+    // GroupHarpon () {
+    //     harpon = game.add.group();
+    //     this.harpon.enableBody = true;
+    //     this.harpon.physicsBodyType = phaser.Physics.ARCADE;
 
-        this.harpon.createMultiple(30, 'meteors');
+    //     this.harpon.createMultiple(30, 'meteors');
 
-        this.harpon.callAll('events.onOutOfBounds.add', 'events.onOutOfBounds', resetMeteors);
-        this.meteors.callAll('anchor.setTo', 'anchor', 0.5, 1.0);
+    //     this.harpon.callAll('events.onOutOfBounds.add', 'events.onOutOfBounds', resetMeteors);
+    //     this.meteors.callAll('anchor.setTo', 'anchor', 0.5, 1.0);
 
-        this.meteors.setAll('checkWorlddBounds', true);
-    }
+    //     this.meteors.setAll('checkWorlddBounds', true);
+    // }
 
-    fireSecHarpon() {
-        // Get the first laser that's inactive, by passing 'false' as a parameter
-        var harpon = harpon.getFirstExists(false);
-        if (harpon) {
-            // If we have a laser, set it to the starting position
-            harpon.reset(player.x, 900);
-            // Give it a velocity of -500 so it starts shooting
-            harpon.body.velocity.y = 500;
-        }
-    }
+    // fireSecHarpon() {
+    //     // Get the first laser that's inactive, by passing 'false' as a parameter
+    //     var harpon = harpon.getFirstExists(false);
+    //     if (harpon) {
+    //         // If we have a laser, set it to the starting position
+    //         harpon.reset(player.x, 900);
+    //         // Give it a velocity of -500 so it starts shooting
+    //         harpon.body.velocity.y = 500;
+    //     }
+    // }
 
-    resetMeteors(meteors) {
-        meteors.kill();
-    }
+    // resetMeteors(meteors) {
+    //     meteors.kill();
+    // }
 
-    GroupMeteors () {
-        meteors = game.add.group();
-        this.meteors.enableBody = true;
-        this.meteors.physicsBodyType = phaser.Physics.ARCADE;
+    // GroupMeteors () {
+    //     meteors = game.add.group();
+    //     this.meteors.enableBody = true;
+    //     this.meteors.physicsBodyType = phaser.Physics.ARCADE;
 
-        this.meteors.createMultiple(30, 'meteors');
+    //     this.meteors.createMultiple(30, 'meteors');
 
-        this.meteors.callAll('events.onOutOfBounds.add', 'events.onOutOfBounds', resetMeteors);
-        this.meteors.callAll('anchor.setTo', 'anchor', 0.5, 1.0);
+    //     this.meteors.callAll('events.onOutOfBounds.add', 'events.onOutOfBounds', resetMeteors);
+    //     this.meteors.callAll('anchor.setTo', 'anchor', 0.5, 1.0);
 
-        this.meteors.setAll('checkWorlddBounds', true);
-    }
+    //     this.meteors.setAll('checkWorlddBounds', true);
+    // }
 
-    resetMeteors(meteors) {
-        meteors.kill();
-    }
+    // resetMeteors(meteors) {
+    //     meteors.kill();
+    // }
 }

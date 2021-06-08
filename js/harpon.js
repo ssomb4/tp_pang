@@ -14,6 +14,5 @@ export class Harpon extends Phaser.Physics.Arcade.Sprite{
     }
 
     update(time){
-        this.setVelocityY(this.velocity);
     }
 }
