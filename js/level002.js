@@ -16,7 +16,9 @@ export class Level002 extends Phaser.Scene {
 
         this.input.on('pointerdown', (pointer) => {
             console.log(`${pointer.x}, ${pointer.y}`);
-        })
+        });
+
+        this.hearts = [];
     }
 
     create() {
@@ -45,6 +47,41 @@ export class Level002 extends Phaser.Scene {
             color: '#ffff',
             fontSize: 150
         });
+
+        this.physics.add.overlap(this.player, this.meteors, this.onMeteors, null, this);
+
+        this.prepareHUD();
+    }
+
+    onMeteors(player, meteors) {
+        player.hit();
+        if(!player.isDead()) {
+            player.setPosition(
+                this.game.config.width * 0.5,
+                this.game.config.height,
+            )
+        } else {
+            this.scene.restart();
+        }
+    }
+
+    prepareHUD() {
+        let nLives = this.player.getLives();
+
+        for(let i = 0; i < nLives; ++i) {
+            this.hearts.push(
+                this.add.image(200 + i * 250, 400, 'egg')
+            );
+        }
+    }
+
+    updateHUD() {
+        let availableLives = this.player.getLives();
+
+        for(let i = this.hearts.length - 1; i >= availableLives; --i) {
+            this.hearts[i].setTexture('egg2');
+        }
+        
     }
 
     update(time) {
@@ -52,6 +89,9 @@ export class Level002 extends Phaser.Scene {
         //this.player2.update(time);
 
         //this.harpon.update(time);
+
+        this.updateHUD();
+
     }
 
     fireHarpon() {

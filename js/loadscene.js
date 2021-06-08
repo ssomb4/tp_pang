@@ -21,10 +21,13 @@ export class LoadScene extends Phaser.Scene {
             frameHeight: 288
         });
 
-        this.load.spritesheet('player2', './images/player2.png', {
-            frameWidth: 256,
-            frameHeight: 288
-        });
+        // this.load.spritesheet('player2', './images/player2.png', {
+        //     frameWidth: 256,
+        //     frameHeight: 288
+        // });
+
+        this.load.image('egg', './images/egg.png');
+        this.load.image('egg2', './images/egg2.png');
     }
 
     create() {
