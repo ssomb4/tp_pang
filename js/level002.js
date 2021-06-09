@@ -53,7 +53,7 @@ export class Level002 extends Phaser.Scene {
         this.prepareHUD();
     }
 
-    onMeteors(player, meteors) {
+    onMeteors(player, ) {
         player.hit();
         if(!player.isDead()) {
             player.setPosition(
