@@ -1,3 +1,4 @@
+
 export class Meteors extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame);
@@ -33,9 +34,5 @@ export class Meteors extends Phaser.Physics.Arcade.Sprite{
                 this.initial_velocity.max.y
             )
         );
-    }
-
-    update(time) {
-        
     }
 }

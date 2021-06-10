@@ -1,2 +1,2 @@
-# tp_pang
- Pang in Phaser
+# Pang
+ Pang made in javascript

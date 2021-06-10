@@ -1,6 +1,3 @@
-import { Harpon } from "./harpon.js";
-import { Level001 } from "./level001.js";
-
 export class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame);
@@ -20,18 +17,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         this.anims.play('idle');
 
         this.previous_state = this.state;
-
-        //if(this.scene.start('Level001')){
-            this.lives = 3;
-        //}
-
-        // else if('Level002'){
-        //     this.lives = 2;
-        // }
-
-        // else{
-        //     this.lives = 1;
-        // }
+        this.lives = 3;
     }
 
     update(time) {
@@ -50,11 +36,10 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
             this.state = "idle";
         }
 
-         if(this.controls.space.isDown) {
-            console.log("aaaaaaaa");
+        if(this.controls.space.isDown) {
             this.state = 'scream';
-            this.scene.fireHarpon();
-         }
+            this.setVelocityX(0);
+        }
 
         if(this.state != this.previous_state) {
             this.previous_state = this.state;
