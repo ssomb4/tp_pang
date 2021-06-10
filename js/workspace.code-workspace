@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\..\\Pang\\images"
+		},
+		{
+			"path": "..\\..\\Pang\\js"
+		},
+		{
+			"path": "..\\..\\Pang\\sounds"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "tp_pang"
+	}
+}
